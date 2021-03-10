@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const characteristicsItemElems = document.querySelectorAll('.characteristics__item');
 
         const open = (button, dropDown) => {
-            closeAllDrops();
+            closeAllDrops(button, dropDown);
             dropDown.style.height = `${dropDown.scrollHeight}px`;
             button.classList.add('acnive');
             dropDown.classList.add('active');
@@ -118,6 +118,23 @@ document.addEventListener('DOMContentLoaded', () => {
         
     };
 
+    const modal = () => {
+        const cardDetailsButtonBuy = document.querySelector('.card-details__button_buy');
+        const modal = document.querySelector('.modal');
+
+        cardDetailsButtonBuy.addEventListener('click', () => {
+            modal.classList.add('open');
+        });
+
+        modal.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target.classList.contains('modal__close')) {
+                modal.classList.remove('open');
+            }
+        });
+    };
+
     tabs();
     accordion();
+    modal();
 });
